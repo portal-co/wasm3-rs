@@ -99,6 +99,13 @@ where
             None
         }
     }
+
+    pub unsafe fn into_raw(&self) -> &ffi::M3Function{
+        return self.raw.as_ref();
+    }
+    pub unsafe fn into_raw_mut(&mut self) -> &mut ffi::M3Function{
+        return self.raw.as_mut();
+    }
 }
 
 impl<'rt, Args, Ret> Function<'rt, Args, Ret>

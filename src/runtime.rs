@@ -24,6 +24,12 @@ pub struct Runtime {
 }
 
 impl Runtime {
+    pub unsafe fn into_raw(&self) -> &ffi::M3Runtime{
+        return self.raw.as_ref();
+    }
+    pub unsafe fn into_raw_mut(&mut self) -> &mut ffi::M3Runtime{
+        return self.raw.as_mut();
+    }
     /// Creates a new runtime with the given stack size in slots.
     ///
     /// # Errors

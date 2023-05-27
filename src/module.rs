@@ -63,6 +63,14 @@ impl ParsedModule {
     pub fn environment(&self) -> &Environment {
         &self.env
     }
+
+    
+    pub unsafe fn into_raw(&self) -> &ffi::M3Module{
+        return self.raw.0.as_ref();
+    }
+    pub unsafe fn into_raw_mut(&mut self) -> &mut ffi::M3Module{
+        return self.raw.0.as_mut();
+    }
 }
 
 /// A loaded module belonging to a specific runtime. Allows for linking and looking up functions.
@@ -225,6 +233,15 @@ impl<'rt> Module<'rt> {
     #[cfg(feature = "wasi")]
     pub fn link_wasi(&mut self) -> Result<()> {
         unsafe { Error::from_ffi_res(ffi::m3_LinkWASI(self.raw)) }
+    }
+
+
+    
+    pub unsafe fn into_raw(&self) -> &ffi::M3Module{
+        return self.raw.as_ref();
+    }
+    pub unsafe fn into_raw_mut(&mut self) -> &mut ffi::M3Module{
+        return self.raw.as_mut();
     }
 }
 

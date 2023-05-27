@@ -53,6 +53,13 @@ impl Environment {
     pub(crate) fn as_ptr(&self) -> ffi::IM3Environment {
         (self.0).0.as_ptr()
     }
+
+    pub unsafe fn into_raw(&self) -> &ffi::M3Environment{
+        return self.0.0.as_ref();
+    }
+    pub unsafe fn into_raw_mut(&mut self) -> &mut ffi::M3Environment{
+        return self.0.0.as_mut();
+    }
 }
 
 impl core::cmp::Eq for Environment {}

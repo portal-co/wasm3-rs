@@ -23,6 +23,7 @@ cty = "0.2"
 [build-dependencies]
 cc = "1"
 shlex = "0.1.1"
+libs-all = {path = "../../../util/libs-all"}
 
 [build-dependencies.bindgen]
 version = "0.59"
